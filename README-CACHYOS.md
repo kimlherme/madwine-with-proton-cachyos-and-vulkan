@@ -5,7 +5,7 @@ Este procedimento prepara uma cópia local e fixada do Madwine v0.1.22 para proc
 ## Requisitos
 
 - Python 3, `unsquashfs` (pacote `squashfs-tools`) e `curl` ou `wget`.
-- `proton-cachyos-native` executável em `/usr/share/steam/compatibilitytools.d/proton-cachyos-native/proton`.
+- `proton-cachyos-native` em `/usr/share/steam/compatibilitytools.d/proton-cachyos-native/proton`; no Arch, CachyOS e Omarchy o launcher tenta instalá-lo com `pacman` e, se não estiver nos repositórios configurados, com `paru` ou `yay`.
 - `vulkaninfo` (pacote `vulkan-tools`) e um dispositivo Vulkan disponível.
 
 No CachyOS, instale as ferramentas de extração se necessário:
@@ -22,7 +22,7 @@ Na cópia deste repositório que contém `prepare-cachyos.py` e `run-cachyos.sh`
 
 O instalador baixa somente o AppImage v0.1.22 e confere seu SHA-256 antes da extração. O destino padrão é `$XDG_DATA_HOME/madwine`, ou `~/.local/share/madwine` quando `XDG_DATA_HOME` não está definido. O original fica em `Madwine_0.1.22_amd64.original.AppImage`; o AppDir alterado fica em `Madwine-CachyOS/`.
 
-O instalador termina iniciando `run-cachyos.sh`. O launcher exige Proton CachyOS executável e um dispositivo listado por `vulkaninfo --summary`; em seguida define `PROTON_USE_WINED3D=0` somente para Madwine, remove variáveis herdadas que poderiam conflitar com o runtime e executa o AppDir. Não há fallback para GE nem para WineD3D. Use o caminho impresso pelo instalador nos atalhos do desktop para que eles também passem por essas verificações.
+O instalador termina iniciando `run-cachyos.sh`. Se o Proton estiver ausente em Arch/CachyOS/Omarchy, o launcher tenta primeiro `sudo pacman -S --needed proton-cachyos-native` e depois `paru` ou `yay`, se estiverem disponíveis. Se não conseguir, pede o caminho de uma instalação existente; após confirmação, cria um link em `/usr/share/steam/compatibilitytools.d/proton-cachyos-native` para que Madwine encontre essa instalação. Em lançamentos sem terminal, o Proton precisa estar instalado previamente no caminho esperado. O launcher também exige um dispositivo listado por `vulkaninfo --summary`; em seguida define `PROTON_USE_WINED3D=0` somente para Madwine, remove variáveis herdadas que poderiam conflitar com o runtime e executa o AppDir. Não há fallback para GE nem para WineD3D. Use o caminho impresso pelo instalador nos atalhos do desktop para que eles também passem por essas verificações.
 
 Antes de iniciar Madwine, o launcher ativa `reuseSteamProton: true` em `madwine/config.json` dentro de `$XDG_CONFIG_HOME` (ou `~/.config`). Os demais campos são preservados. Se a configuração mudar, uma cópia é guardada ao lado com o sufixo `.pre-cachyos-<data>.bak`; uma configuração JSON inválida interrompe a inicialização sem sobrescrevê-la.
 
