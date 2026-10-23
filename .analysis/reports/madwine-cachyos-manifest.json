@@ -1,0 +1,11 @@
+{
+  "release": "v0.1.22",
+  "source_appimage_sha256": "f6a05177f186c96dde5b948ed12c16e9ca9e85e703f947be8e267da3a584501b",
+  "source_elf_sha256": "8c9079e40659145e9de979601d2d9d740f5c7a157f76d9385b9c64f55215a42b",
+  "patched_elf_sha256": "512837169e6b1a16ac454ecb847e08b466d899254fbda7349e6ecd1e581b7be6",
+  "changes": [
+    "GE-Proton11-5-x86_64 -> proton-cachyos-native (6 references)",
+    ".local/share/Steam/compatibilitytools.d -> /usr/share/steam/compatibilitytools.d",
+    "first read-only PT_LOAD extended by 21 bytes into verified zero padding"
+  ]
+}

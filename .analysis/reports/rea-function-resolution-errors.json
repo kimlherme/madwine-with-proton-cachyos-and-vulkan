@@ -1,0 +1,35 @@
+{
+  "note": "REA failure diagnostics; no Evidence ID was returned for these queries.",
+  "queries": [
+    {
+      "query_file": "wined3d-function-rea.json",
+      "error_code": "invalid_request",
+      "message": "Analysis input is invalid. Check the arguments and try again.",
+      "issues": [
+        {
+          "path": [],
+          "reason": "invalid_value",
+          "message": "File offset 0xa8aaba maps to analysis address 0xb8baba, but no procedure starts at or contains that address in the current Ghidra analysis. Choose an observed procedure with CLI rea search <path> . --kind procedures --mode regex --provider ghidra --json or MCP list_procedures."
+        }
+      ],
+      "target_sha256": "8c9079e40659145e9de979601d2d9d740f5c7a157f76d9385b9c64f55215a42b",
+      "provider_version": "12.1.4",
+      "profile_digest": "84f681b5c5c66ab5fec1ad695a93df37f0467d51f7f25ad762236a8f83dc2f89"
+    },
+    {
+      "query_file": "function-b8d420.json",
+      "error_code": "invalid_request",
+      "message": "Analysis input is invalid. Check the arguments and try again.",
+      "issues": [
+        {
+          "path": [],
+          "reason": "invalid_value",
+          "message": "No procedure exists at the requested address: 0xb8d420; Ghidra image base: 0x100000. Choose an observed analysis address. CLI: rea search <path> . --kind procedures --mode regex --provider ghidra --json; MCP: list_procedures. Inspect the loaded base and source mappings with CLI rea analyze <path> --provider ghidra --json and rea inspect-native-load-image <path> --provider ghidra --json, or MCP binary_overview and inspect_native_load_image. Repeat the original target options. For decompile, select source coordinates explicitly with --file-offset=0x... or MCP procedure file-offset:0x...."
+        }
+      ],
+      "target_sha256": "8c9079e40659145e9de979601d2d9d740f5c7a157f76d9385b9c64f55215a42b",
+      "provider_version": "12.1.4",
+      "profile_digest": "84f681b5c5c66ab5fec1ad695a93df37f0467d51f7f25ad762236a8f83dc2f89"
+    }
+  ]
+}
