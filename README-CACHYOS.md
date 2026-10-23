@@ -8,6 +8,12 @@ Este procedimento prepara uma cópia local e fixada do Madwine v0.1.22 para proc
 - `proton-cachyos-native` executável em `/usr/share/steam/compatibilitytools.d/proton-cachyos-native/proton`.
 - `vulkaninfo` (pacote `vulkan-tools`) e um dispositivo Vulkan disponível.
 
+No CachyOS, instale as ferramentas de extração se necessário:
+
+```sh
+sudo pacman -S --needed squashfs-tools
+```
+
 Na cópia deste repositório que contém `prepare-cachyos.py` e `run-cachyos.sh`, execute:
 
 ```sh

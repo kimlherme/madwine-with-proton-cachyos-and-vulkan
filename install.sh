@@ -13,6 +13,10 @@ download_url="https://github.com/Ring0lw/madwine/releases/download/v0.1.22/Madwi
     exit 1
 }
 command -v python3 >/dev/null 2>&1 || { printf 'Erro: python3 é necessário.\n' >&2; exit 1; }
+command -v unsquashfs >/dev/null 2>&1 || {
+    printf "Erro: 'unsquashfs' não encontrado. No CachyOS/Arch, instale com: sudo pacman -S --needed squashfs-tools\n" >&2
+    exit 1
+}
 mkdir -p "$install_dir"
 
 check_hash() {
